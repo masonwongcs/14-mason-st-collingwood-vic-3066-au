@@ -9,6 +9,10 @@
   justify-content: center;
   transition: transform 200ms var(--material-cubic-bezier);
 
+  @media screen and (max-width: 600px) {
+    transition-duration: 150ms;
+  }
+
   &--icon {
     transition: transform 200ms var(--material-cubic-bezier);
     position: relative;

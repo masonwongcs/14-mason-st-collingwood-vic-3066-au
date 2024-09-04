@@ -48,15 +48,21 @@ const useGameStore = create<GameState>((set, get) => ({
   setGameMode: (mode) => set({ gameMode: mode }),
   setTotalSteps: (steps) => set({ totalSteps: steps }),
   move: (dx, dy) => {
-    const { position, totalSteps } = get();
+    const { checkForPrize, position, totalSteps } = get();
+    const newX = Math.max(0, Math.min(GRID_COL - 1, position.x + dx));
+    const newY = Math.max(0, Math.min(GRID_COL - 1, position.y + dy));
+
     set({
-      position: {
-        x: Math.max(0, Math.min(GRID_COL - 1, position.x + dx)),
-        y: Math.max(0, Math.min(GRID_COL - 1, position.y + dy))
-      },
-      totalSteps: totalSteps + 1
+      position: { x: newX, y: newY }
     });
-    get().checkForPrize();
+
+    if (newX !== position.x || newY !== position.y) {
+      set({
+        totalSteps: totalSteps + 1
+      });
+    }
+
+    checkForPrize();
   },
   moveForward: () => {
     const { direction } = get();

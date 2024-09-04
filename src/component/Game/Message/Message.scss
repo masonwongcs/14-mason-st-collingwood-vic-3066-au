@@ -8,11 +8,13 @@
   justify-content: center;
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
   transition: all 400ms var(--material-cubic-bezier);
 
   &.show {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
   }
 
   &--content {
