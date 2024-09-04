@@ -1,0 +1,87 @@
+:root {
+  --primary-grey: #f7f7f7;
+  --secondary-grey: #dbdbdb;
+  --ascent-color: #e15a1d;
+  --material-cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+.btn {
+  cursor: pointer;
+  color: #fff;
+  background-color: var(--ascent-color);
+  height: 42px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0 40px;
+  border: 0;
+  border-radius: 4px;
+  outline: none;
+  box-shadow:
+    rgba(0, 0, 0, 0.3) 0 27px 15px -17px,
+    rgba(0, 0, 0, 0.3) 0 2px 4px;
+  transition: all 200ms var(--material-cubic-bezier);
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: rgb(199, 87, 36);
+      box-shadow:
+        rgba(0, 0, 0, 0.3) 0 20px 15px -17px,
+        rgba(0, 0, 0, 0.3) 0 1px 2px;
+    }
+  }
+}
+
+.wrapper {
+  width: 600px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
