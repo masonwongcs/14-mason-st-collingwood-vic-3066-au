@@ -1,27 +1,32 @@
 import './Board.scss';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
+import { Arrow } from '@/component/Game/Arrow';
 import { SwipeDetector } from '@/component/Game/Board/Board.utils';
 import { GRID_COL, MODE } from '@/component/Game/Game.constant';
 import { useGameStore } from '@/store/gameStore';
 
 const Board = () => {
-  const { position, direction, prizes, gameMode, isCompleted, move, moveForward, moveBackward, rotate, resetGame } =
+  const { prizes, gameMode, isCompleted, move, moveForward, moveBackward, rotate, resetGame, setDirection } =
     useGameStore();
 
   const handleSwipe = (direction: string) => {
     switch (direction) {
       case 'up':
+        setDirection(0);
         move(0, -1);
         break;
       case 'left':
+        setDirection(3);
         move(-1, 0);
         break;
       case 'down':
+        setDirection(2);
         move(0, 1);
         break;
       case 'right':
+        setDirection(1);
         move(1, 0);
         break;
     }
@@ -37,19 +42,39 @@ const Board = () => {
       switch (event.key) {
         case 'w':
         case 'ArrowUp':
-          gameMode === MODE[0].id ? moveForward() : move(0, -1);
+          if (gameMode === MODE[0].id) {
+            moveForward();
+          } else {
+            setDirection(0);
+            move(0, -1);
+          }
           break;
         case 'a':
         case 'ArrowLeft':
-          gameMode === MODE[0].id ? rotate(false) : move(-1, 0);
+          if (gameMode === MODE[0].id) {
+            rotate(false);
+          } else {
+            setDirection(3);
+            move(-1, 0);
+          }
           break;
         case 's':
         case 'ArrowDown':
-          gameMode === MODE[0].id ? moveBackward() : move(0, 1);
+          if (gameMode === MODE[0].id) {
+            moveBackward();
+          } else {
+            setDirection(2);
+            move(0, 1);
+          }
           break;
         case 'd':
         case 'ArrowRight':
-          gameMode === MODE[0].id ? rotate(true) : move(1, 0);
+          if (gameMode === MODE[0].id) {
+            rotate(true);
+          } else {
+            setDirection(1);
+            move(1, 0);
+          }
           break;
       }
     };
@@ -75,17 +100,7 @@ const Board = () => {
             </div>
           );
         })}
-        <div
-          className="boardWrapper--arrow"
-          style={{
-            transform: `translate(calc(${position.x} * var(--gridSize)), calc(${position.y} * var(--gridSize)))`
-          }}
-        >
-          <div className="boardWrapper--arrow--icon" style={{ transform: `rotate(${direction * 90}deg)` }}>
-            <img src="/images/owl.svg" alt="Bellroy Owl" />
-            <img src="/images/arrow.svg" alt="Arrow" />
-          </div>
-        </div>
+        <Arrow />
       </div>
     </SwipeDetector>
   );

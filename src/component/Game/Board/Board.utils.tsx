@@ -4,7 +4,7 @@ const SwipeDetector = ({ onSwipe, children }: { onSwipe: (direction: string) => 
   const [touchStart, setTouchStart] = useState({ x: 0, y: 0 });
   const [touchEnd, setTouchEnd] = useState({ x: 0, y: 0 });
 
-  const minSwipeDistance = 50;
+  const minSwipeDistance = 10;
 
   const onTouchStart = useCallback((e: TouchEvent) => {
     setTouchEnd({ x: 0, y: 0 });
