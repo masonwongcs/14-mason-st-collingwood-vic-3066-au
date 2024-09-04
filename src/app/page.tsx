@@ -6,6 +6,7 @@ import { useGameStore } from '@/store/gameStore';
 
 export default function Home() {
   const isGameStarted = useGameStore((state) => state.isGameStarted);
+
   return (
     <main>
       <Interstitial />

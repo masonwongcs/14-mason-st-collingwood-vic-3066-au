@@ -3,6 +3,13 @@
   --secondary-grey: #dbdbdb;
   --ascent-color: #e15a1d;
   --material-cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
+  --gridSize: 120px;
+  --gridCol: 5;
+
+  @media screen and (max-width: 600px) {
+    --gridSize: calc(calc(100vw - 40px) / 5);
+    --gridCol: 5;
+  }
 }
 
 * {
