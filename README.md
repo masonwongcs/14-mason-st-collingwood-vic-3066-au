@@ -72,6 +72,10 @@ Bellroy Collect is an interactive web-based game where players navigate an owl t
 - Collect all the prizes on the grid to complete the game
 - Try to complete the game in as few steps as possible
 
+## Design
+
+[Figma](https://www.figma.com/design/q8LqzyiITKhwQeegfo3Yo4/Bellroy-Collect?node-id=0-1&t=Cc96UOG0UF5YQD5b-1)
+
 ## Demo
 
 https://14-mason-st-collingwood-vic-3066-au.vercel.app/
